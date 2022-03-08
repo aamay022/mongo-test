@@ -1,8 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/users')
+
 // const db = require('./data/db-config')
 
 // const session = require('express-session')
@@ -35,7 +37,7 @@ server.use(express.json())
 server.use(helmet())
 server.use(cors())
 
-const dbURI = 'mongodb+srv://Antman_0607:Ladiesman7@cluster0.c6l9a.mongodb.net/node-tuts?retryWrites=true&w=majority'
+const dbURI = process.env.URI
 mongoose.connect(dbURI)
 .then((result)=> console.log('connected db'))
 .catch((err)=> console.log(err))
